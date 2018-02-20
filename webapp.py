@@ -44,12 +44,11 @@ def post():
     #Every post should include the username of the poster and text of the post.
     try:
         with open(file,'r+') as jsonFile:
-            data = {}  
-            data['people'] = []  
-            data['people'].append({  
-                'name': 'Scott',
-                'website': 'stackabuse.com',
-                'from': 'Nebraska'
+            data = json.load(jsonFile)
+            data.append({  
+                'name': 'Tim',
+                'website': 'apple.com',
+                'from': 'Alabama'
             })
             json.dump(data,jsonFile)
     except:
