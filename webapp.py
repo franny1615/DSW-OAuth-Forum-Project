@@ -48,6 +48,8 @@ def post():
             data.append({  
                 session['user_data']['logged_in']: request.form['message']
             })
+            jsonFile.seek(0)
+            jsonFile.truncate()
             json.dump(data,jsonFile)
     except:
         mess = "no post"
