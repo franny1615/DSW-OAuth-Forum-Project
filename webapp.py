@@ -44,7 +44,14 @@ def post():
     #Every post should include the username of the poster and text of the post.
     try:
         with open(file,'r+') as jsonFile:
-            json.dump('[{session['user_data']['logged_in']:request.form['message']}]',jsonFile)
+            data = {}  
+            data['people'] = []  
+            data['people'].append({  
+                'name': 'Scott',
+                'website': 'stackabuse.com',
+                'from': 'Nebraska'
+            })
+            json.dump(data,jsonFile)
     except:
         mess = "no post"
     return render_template('home.html', past_posts=posts_to_html(), rar=mess)
