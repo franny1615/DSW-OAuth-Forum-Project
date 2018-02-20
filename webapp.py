@@ -51,7 +51,8 @@ def post():
             jsonFile.seek(0)
             jsonFile.truncate()
             json.dump(data,jsonFile)
-    except:
+    except Exception as e:
+        print(e)
         mess = "no post"
     return render_template('home.html', past_posts=posts_to_html(), rar=mess)
 
