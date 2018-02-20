@@ -47,7 +47,7 @@ def post():
             json.dump('Hello',jsonFile)
     except:
         mess = "no post"
-    return render_template('home.html', past_posts=posts_to_html(),rar=mess)
+    return render_template('[{session['user_data']['logged_in']:request.form['message']}]', past_posts=posts_to_html(), rar=mess)
 
 def posts_to_html():
     post = "nothing"
