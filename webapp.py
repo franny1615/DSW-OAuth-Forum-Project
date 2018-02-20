@@ -51,7 +51,6 @@ def post():
                 'from': 'Alabama'
             })
             json.dump(data,jsonFile)
-            mess = "Got here my leige"
     except:
         mess = "no post"
     return render_template('home.html', past_posts=posts_to_html(), rar=mess)
