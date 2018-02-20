@@ -44,7 +44,6 @@ def post():
     #Every post should include the username of the poster and text of the post.
     try:
         with open(file,'r+') as jsonFile:
-            data = json.load(jsonFile)
             json.dump('Hello',jsonFile)
     except:
         mess = "no post"
