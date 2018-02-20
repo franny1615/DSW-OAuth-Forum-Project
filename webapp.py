@@ -46,9 +46,7 @@ def post():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             data.append({  
-                'name': 'Tim',
-                'website': 'apple.com',
-                'from': 'Alabama'
+                session['user_data']['logged_in']: request.form['message']
             })
             json.dump(data,jsonFile)
     except:
