@@ -55,17 +55,18 @@ def post():
     return render_template('home.html', past_posts=posts_to_html())
 
 def posts_to_html():
-    post = Markup("<table><tr><td>Username</td><td>Post</td></tr>"
+    post = "<table>"
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for stuff in data:
-                post += Markup("<tr><td>" + "Username: " + stuff[0] + ", Message: " +stuff[1] + "</td></tr>")
+                post += '<tr>' + stuff[0] + stuff[1] + '</tr>'
     except Exception as e:
         print(e)
-        post = Markup("<p>Post could not be submitted.</p>")
-    post += Markup("</table>")
-    return post
+        post = "<p>Post could not be submitted.</p>"
+    post += '</table>'
+    formattedPost = Markup(post)
+    return formattedPost
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
