@@ -62,6 +62,7 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
     except Exception as e:
+        print(e)
         post = "nothing"
     return post
 
