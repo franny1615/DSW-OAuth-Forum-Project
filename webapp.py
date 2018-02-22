@@ -46,7 +46,7 @@ def post():
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
-            data.append(session['user_data']['login'] + ", " + request.form['message'])
+            data.append("Username: " + session['user_data']['login'] + ", Message: " + request.form['message'])
             jsonFile.seek(0)
             jsonFile.truncate()
             json.dump(data,jsonFile)
@@ -55,7 +55,7 @@ def post():
     return render_template('home.html', past_posts=posts_to_html())
 
 def posts_to_html():
-    post = "something"
+    post = "No Post Yet"
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
