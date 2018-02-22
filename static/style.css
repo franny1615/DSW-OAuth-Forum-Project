@@ -10,4 +10,6 @@ body {
 #postTable{
      width:100%;
      border: 1px solid black;
+     border-radius:20px;
+     background-color:grey;
 }
