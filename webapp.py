@@ -55,7 +55,7 @@ def post():
     return render_template('home.html', past_posts=posts_to_html())
 
 def posts_to_html():
-    post = "<table><tr><td>Username</td><td>Post</td></tr>"
+    post = "<table id='postTable'><tr><td>Username</td><td>Post</td></tr>"
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
