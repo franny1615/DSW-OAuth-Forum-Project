@@ -43,6 +43,7 @@ def home():
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
+    mess = "nothing"
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
