@@ -60,7 +60,7 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for stuff in data:
-                post = Markup("<p>" + stuff + "</p>")
+                post = Markup("<p>" + "Username: " + stuff[0] + ", Message: " +stuff[1] + "</p>")
     except Exception as e:
         print(e)
         post = Markup("<p>Post could not be submitted.</p>")
