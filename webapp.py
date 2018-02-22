@@ -57,10 +57,11 @@ def post():
     return render_template('home.html', past_posts=posts_to_html(), rar=mess)
 
 def posts_to_html():
+    post = "something"
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
-    except:
+    except Exception as e:
         post = "nothing"
     return post
 
