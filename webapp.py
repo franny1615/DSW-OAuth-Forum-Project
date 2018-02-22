@@ -61,10 +61,10 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for key in data:
-                post = key + " " + data[key]
+                post = Markup("<p>" + key + " " + data[key] + "</p>")
     except Exception as e:
         print(e)
-        post = "nothing"
+        post = Markup("<p>Nothing</p>")
     return post
 
 #redirect to GitHub's OAuth page and confirm callback URL
