@@ -47,9 +47,7 @@ def post():
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
-            data.append(str({  
-                session['user_data']['login']: request.form['message']
-            }))
+            data.append(session['user_data']['login'] + ", " + request.form[message])
             jsonFile.seek(0)
             jsonFile.truncate()
             json.dump(data,jsonFile)
@@ -63,9 +61,8 @@ def posts_to_html():
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
-            for dict in data:
-                for key, value in dict.items():
-                    post = Markup("<p>" + key + " " + value + "</p>")
+            for stuff in data:
+                post = Markup("<p>" + stuff + "</p>")
     except Exception as e:
         print(e)
         post = Markup("<p>Nothing</p>")
