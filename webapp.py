@@ -64,7 +64,8 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for items in data:
-                post = Markup("<p>" + items + "</p>")
+                for key, value in items.items():
+                    post = Markup("<p>" + key + " " + value + "</p>")
     except Exception as e:
         print(e)
         post = Markup("<p>Nothing</p>")
