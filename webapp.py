@@ -60,7 +60,7 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for stuff in data:
-                post += '<tr>' + '<td><a href=' + '"https://github.com/' + '@' + stuff[0] + '">' + stuff[0] +'</a>' + '</td><td>' + stuff[1] + '</td></tr>'
+                post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td>' + stuff[1] + '</td></tr>'
     except Exception as e:
         print(e)
         post = "<p>Post could not be submitted.</p>"
