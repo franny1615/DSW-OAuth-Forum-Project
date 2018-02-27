@@ -60,10 +60,8 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for stuff in data:
-                if 'lorax' in stuff[1]:
-                    post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">' + "The lorax is the protector of the trees, do not use his name in vain. Thank you!" + '</td></tr>'
-                elif 'fuck' in stuff[1]:
-                    post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">' + "F-word is a no no my friend." + '</td></tr>'
+                if 'lorax' or 'fuck' in stuff[1]:
+                    post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">' + "Offensive language is not tolerated. Thank you." + '</td></tr>'
                 else:
                     post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">' + stuff[1] + '</td></tr>'
     except Exception as e:
