@@ -11,8 +11,10 @@ body {
      width:100%;
      border-radius:5px;
      background-color:#ccd6dd;
+     margin-bottom:20px;
 }
 
 #postTable td{
      padding-left:20px;
+     padding-bottom:20px;
 }
