@@ -62,11 +62,18 @@ def posts_to_html():
             for stuff in data:
                 post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">'
                 swearwords = ['lorax','fuck','cunt','nigger','heckin']
-                for badword in swearwords:
-                    if badword in stuff[1]:
-                        post += "Offensive language is not tolerated."
-                    else:
-                        post += stuff[1] 
+                if swearwords[0] in stuf[1]:
+                    post += "Offensive language is not tolerated."
+                elif swearwords[1] in stuf[1]:
+                    post += "Offensive language is not tolerated."
+                elif swearwords[2] in stuf[1]:
+                    post += "Offensive language is not tolerated."
+                elif swearwords[3] in stuf[1]:
+                    post += "Offensive language is not tolerated."
+                elif swearwords[4] in stuf[1]:
+                    post += "Offensive language is not tolerated."
+                else:
+                    post += stuff[1] 
                 post += '</td></tr>'
     except Exception as e:
         print(e)
