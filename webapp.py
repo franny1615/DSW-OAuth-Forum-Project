@@ -72,8 +72,6 @@ def posts_to_html():
                     post += "Offensive language is not tolerated."
                 elif swearwords[4] in stuff[1]:
                     post += "Offensive language is not tolerated."
-                elif "" in stuff[1]:
-                    post += "Empty Message."
                 else:
                     post += stuff[1] 
                 post += '</td></tr>'
