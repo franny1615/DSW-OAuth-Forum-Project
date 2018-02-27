@@ -74,7 +74,7 @@ def posts_to_html():
                     post += "Offensive language is not tolerated."
                 else:
                     post += stuff[1] 
-                post += '</td><td><button type="button" class="btn">Reply</button></td></tr><br><br>'
+                post += '</td><td><button type="button" class="btn">Reply</button></td></tr>'
     except Exception as e:
         print(e)
         post = "<p>Post could not be submitted.</p>"
