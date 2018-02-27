@@ -61,12 +61,12 @@ def posts_to_html():
             data = json.load(jsonFile)
             for stuff in data:
                 post += '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">'
-                swearwords = ['lorax','fuck','cunt','nigger']
+                swearwords = ['lorax','fuck','cunt','nigger','heckin']
                 for badword in swearwords:
-                    if badword not in stuff[1]:
-                        post = stuff[1]
+                    if badword in stuff[1]:
+                        post += "Offensive language is not tolerated."
                     else:
-                        post = "Offensive language is not tolerated. Thank you."
+                        post += stuff[1] 
                 post += '</td></tr>'
     except Exception as e:
         print(e)
