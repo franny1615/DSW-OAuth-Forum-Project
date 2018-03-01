@@ -63,7 +63,7 @@ def posts_to_html():
                 post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un"><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td class="post">'
                 swearwords = ['lorax','fuck','c-word','n-word','heckin']
                 if '@' in stuff[1]:
-                    post+='<a href=' + '"https://github.com/' + stuff[1] + '">'+ '@' + stuff[1] +'</a>'
+                    post+='<a href=' + '"https://github.com/' + stuff[1] + '">' + stuff[1] +'</a>'
                 elif swearwords[0] in stuff[1]:
                     post += "Offensive language is not tolerated."
                 elif swearwords[1] in stuff[1]:
@@ -76,7 +76,7 @@ def posts_to_html():
                     post += "Offensive language is not tolerated."
                 else:
                     post += stuff[1] 
-                post += '</td><td class="reply"><form action="/posted" method="post"><textarea name="message" style="width:100%; height:50px;"></textarea><br><input type="submit" class="btn btn-success" value="Reply"></form></td></tr></table>'
+                post += '</td></tr></table>'
     except Exception as e:
         print(e)
         post = "<p>Post could not be submitted.</p>"
