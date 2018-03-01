@@ -10,6 +10,8 @@ body {
 #postTable{
      border-radius:5px;
      background-color:#ccd6dd;
+     width:100%;
+     margin-bottom:10px;
 }
 
 #postTable td{
