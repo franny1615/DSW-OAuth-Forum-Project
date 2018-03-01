@@ -74,13 +74,12 @@ def posts_to_html():
                     post += "Offensive language is not tolerated."
                 else:
                     post += stuff[1] 
-                post += '</td><td class="reply"><form action="/replies" method="post"><textarea name="message" style="width:100%; height:50px;"></textarea><br><input type="submit" class="btn btn-success" value="Reply"></form></td></tr></table>'
+                post += '</td><td class="reply"><form action="/posted" method="post"><textarea name="message" style="width:100%; height:50px;"></textarea><br><input type="submit" class="btn btn-success" value="Reply"></form></td></tr></table>'
     except Exception as e:
         print(e)
         post = "<p>Post could not be submitted.</p>"
     formattedPost = Markup(post)
     return formattedPost
-
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
 def login():   
