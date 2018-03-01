@@ -81,7 +81,7 @@ def posts_to_html():
                 elif swearwords[4] in stuff[1]:
                     post += "Offensive language is not tolerated."
                 else:
-                    post += stuff[1] 
+                    post += stuff[1] + session['user_data']
                 post += '</td></tr></table>'
     except Exception as e:
         print(e)
