@@ -46,7 +46,7 @@ def post():
     try:
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
-            data.append([session['user_data']['login'], request.form['message']])
+            data.insert(0,[session['user_data']['login'], request.form['message']])
             jsonFile.seek(0)
             jsonFile.truncate()
             json.dump(data,jsonFile)
