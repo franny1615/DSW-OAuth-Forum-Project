@@ -15,8 +15,8 @@ body {
 }
 
 #postTable td{
-     padding-left:20px;
-     padding-bottom:20px;
+     padding-left:10px;
+     padding-bottom:10px;
 }
 
 .un{
@@ -29,4 +29,5 @@ body {
 
 .reply{
      width:15%;
+     text-align:right;
 }
