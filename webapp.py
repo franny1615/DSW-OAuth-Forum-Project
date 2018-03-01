@@ -60,7 +60,7 @@ def posts_to_html():
         with open(file,'r+') as jsonFile:
             data = json.load(jsonFile)
             for stuff in data:
-                post += "<table id='postTable'><tr><td><b>Username</b></td><td><b>Post</b></td></tr>" + '<tr>' + '<td><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td id="postedmessage">'
+                post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un"><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td class="post">'
                 swearwords = ['lorax','fuck','cunt','nigger','heckin']
                 if swearwords[0] in stuff[1]:
                     post += "Offensive language is not tolerated."
@@ -74,7 +74,7 @@ def posts_to_html():
                     post += "Offensive language is not tolerated."
                 else:
                     post += stuff[1] 
-                post += '</td><td><button type="button" class="btn">Reply</button></td></tr></table>'
+                post += '</td><td class="reply"><button type="button" class="btn">Reply</button></td></tr></table>'
     except Exception as e:
         print(e)
         post = "<p>Post could not be submitted.</p>"
