@@ -64,7 +64,7 @@ def posts_to_html():
                 swearwords = ['lorax','fuck','c-word','n-word','heckin']
                 if '@' in stuff[1]:
                     post+="<a href=' + '"https://github.com/' + stuff[1] + '">'+ '@' + stuff[1] +'</a>'"
-                if swearwords[0] in stuff[1]:
+                elif swearwords[0] in stuff[1]:
                     post += "Offensive language is not tolerated."
                 elif swearwords[1] in stuff[1]:
                     post += "Offensive language is not tolerated."
