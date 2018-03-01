@@ -10,11 +10,21 @@ body {
 #postTable{
      border-radius:5px;
      background-color:#ccd6dd;
-     margin-bottom:20px;
-     width:100%;
 }
 
 #postTable td{
      padding-left:20px;
      padding-bottom:20px;
+}
+
+.un{
+     width:15%;
+}
+
+.post{
+    width:70%;
+}
+
+.reply{
+     width:15%;
 }
