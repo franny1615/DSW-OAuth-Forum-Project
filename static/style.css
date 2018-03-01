@@ -30,4 +30,5 @@ body {
 .reply{
      width:15%;
      text-align: right;
+     padding-right:5px;
 }
