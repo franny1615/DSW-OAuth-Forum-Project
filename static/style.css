@@ -24,11 +24,10 @@ body {
 }
 
 .post{
-    width:70%;
+    width:55%;
 }
 
 .reply{
-     width:15%;
-     text-align: right;
+     width:30%;
      padding-right:5px;
 }
