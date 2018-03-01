@@ -20,15 +20,9 @@ body {
 }
 
 .un{
-     width:15%;
+     width:30%;
 }
 
 .post{
     width:70%;
-}
-
-.reply{
-     width:15%;
-     padding-right:5px;
-     text-align:right;
 }
