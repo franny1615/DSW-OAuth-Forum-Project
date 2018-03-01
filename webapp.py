@@ -62,6 +62,8 @@ def posts_to_html():
             for stuff in data:
                 post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un"><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td class="post">'
                 swearwords = ['lorax','fuck','c-word','n-word','heckin']
+                if '@' in stuff[1]:
+                    post+="<a href=' + '"https://github.com/' + stuff[1] + '">'+ '@' + stuff[1] +'</a>'"
                 if swearwords[0] in stuff[1]:
                     post += "Offensive language is not tolerated."
                 elif swearwords[1] in stuff[1]:
