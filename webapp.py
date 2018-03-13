@@ -51,7 +51,7 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    return render_template('home.html', past_posts=posts_to_html())
+    return render_template('home.html', past_posts=posts_to_html(), testMDB=collection.find_one())
 
 @app.route('/posted', methods=['POST'])
 def post():
