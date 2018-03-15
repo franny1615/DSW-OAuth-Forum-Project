@@ -95,7 +95,7 @@ def posts_to_html():
 @app.route('/deletePost', methods=['POST']) #this does things
 def deletePost():
     #delete post
-    result = "" + request.form['name']
+    result = "" + request.form
     return render_template('home.html', past_posts=Markup("<p>"+result+"</p>"))
 
 #redirect to GitHub's OAuth page and confirm callback URL
