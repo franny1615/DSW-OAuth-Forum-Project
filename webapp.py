@@ -88,6 +88,7 @@ def posts_to_html():
                 post += document['post'][1]
             post += '</td></tr></table>'
     except Exception as e:
+        post += "<p>There is no post.</p>"
     formattedPost = Markup(post)
     return formattedPost
 #redirect to GitHub's OAuth page and confirm callback URL
