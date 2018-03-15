@@ -62,6 +62,7 @@ def post():
 
 def posts_to_html():
     post = ""
+    identifydoc = ""
     try:
         for document in collection.find():
             post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
@@ -86,7 +87,8 @@ def posts_to_html():
                 post += "Offensive language is not tolerated."
             else:
                 post += document['post'][1]
-            post += '</td><td><form action="/deletePost" method="post"><input type="submit" value="Delete" class="btn btn-danger"></form></td></tr></table>'
+            identifydoc += document['_id']
+            post += '</td><td><form action="/deletePost" method="post"><input type="submit" name="'+ identifydoc + '" value="Delete" class="btn btn-danger"></form></td></tr></table>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
@@ -96,7 +98,7 @@ def posts_to_html():
 @app.route('/deletePost', methods=['POST']) #this does things
 def deletePost():
     #delete post
-    collection.deleteOne({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
+    collection.deleteOne({ “_id” : ObjectId(“”)})
     return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
