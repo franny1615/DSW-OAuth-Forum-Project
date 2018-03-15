@@ -88,7 +88,7 @@ def posts_to_html():
             else:
                 post += document['post'][1]
             post += '</td><td><form action="/deletePost" method="post"><input type="submit" value="Delete" class="btn btn-danger"></form></td></tr></table>'
-            post += '<p>' + document['_id'] + '</p>'
+            post += '<p>' + document['_id']['$oid'] + '</p>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
