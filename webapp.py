@@ -93,7 +93,7 @@ def posts_to_html():
     return formattedPost
 
 
-@app.route('/deletePost')
+@app.route('/deletePost', methods=['POST']) #this does things
 def deletePost():
     #delete post
     collection.deleteOne({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
