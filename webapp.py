@@ -86,7 +86,7 @@ def posts_to_html():
                 post += "Offensive language is not tolerated."
             else:
                 post += document['post'][1]
-            post += '</td><td><button class="btn btn-danger">Delete</button></td></tr></table>'
+            post += '</td><td>{% if "github_token" in session %}<button class="btn btn-danger">Delete</button>{% endif %}</td></tr></table>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
