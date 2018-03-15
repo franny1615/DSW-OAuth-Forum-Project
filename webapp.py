@@ -86,7 +86,7 @@ def posts_to_html():
                 post += "Offensive language is not tolerated."
             else:
                 post += document['post'][1]
-            post += '</td><td><form action="/deletePost" method="post"><input type="submit" value="Delete" name="' + str(document.get('_id')) +'" class="btn btn-danger"></form></td></tr></table>'
+            post += '</td><td><form action="/deletePost" method="post"><input type="submit" value="Delete" class="btn btn-danger"></form></td></tr></table>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
@@ -95,11 +95,7 @@ def posts_to_html():
 @app.route('/deletePost', methods=['POST']) #this does things
 def deletePost():
     #delete post
-    result = ""
-    for stuff in request.form:
-        if stuff != "Delete"
-            result = str(stuff)
-    return render_template('home.html', past_posts=Markup("<p>"+result+"</p>"))
+    return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
