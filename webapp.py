@@ -92,7 +92,7 @@ def posts_to_html():
     formattedPost = Markup(post)
     return formattedPost
 
-@app.route('/deletePost')
+@app.route('/deletePost', methods=['POST'])
 def deletePost():
     #delete post
     return render_template('home.html', past_posts=posts_to_html())
