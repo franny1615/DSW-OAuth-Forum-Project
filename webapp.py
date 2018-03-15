@@ -92,9 +92,11 @@ def posts_to_html():
     formattedPost = Markup(post)
     return formattedPost
 
-@app.route('/deletePost', methods=['POST'])
+
+@app.route('/deletePost')
 def deletePost():
     #delete post
+    collection.deleteOne({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
     return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
