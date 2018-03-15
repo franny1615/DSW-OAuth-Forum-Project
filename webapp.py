@@ -65,6 +65,7 @@ def posts_to_html():
     identifydoc = ""
     try:
         for document in collection.find():
+            post += '<p>' + document['_id']['$oid'] + '</p>'
             post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
             swearwords = ['lorax','fuck','c-word','n-word','heckin']
             if '@' in document['post'][1]:
@@ -88,7 +89,6 @@ def posts_to_html():
             else:
                 post += document['post'][1]
             post += '</td><td><form action="/deletePost" method="post"><input type="submit" value="Delete" class="btn btn-danger"></form></td></tr></table>'
-            post += '<p>' + document['_id']['$oid'] + '</p>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
