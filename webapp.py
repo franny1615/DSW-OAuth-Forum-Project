@@ -62,30 +62,33 @@ def post():
 
 def posts_to_html():
     post = ""
-    for document in collection.find():
-        post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
-        swearwords = ['lorax','fuck','c-word','n-word','heckin']
-        if '@' in document['post'][1]:
-            username = ""
-            massage = ""
-            for character in document['post'][1]:
-                if " " in character:
-                    username = stuff[1].split(" ",1)[0]
-                    massage = stuff[1].split(" ",1)[1]
-                    post+='<a href=' + '"https://github.com/' + username.split("@",1)[1] + '">' + username +'</a>' + '  ' + massage
-        elif swearwords[0] in document['post'][1]:
-            post += "Offensive language is not tolerated."
-        elif swearwords[1] in document['post'][1]:
-            post += "Offensive language is not tolerated."
-        elif swearwords[2] in document['post'][1]:
-            post += "Offensive language is not tolerated."
-        elif swearwords[3] in document['post'][1]:
-            post += "Offensive language is not tolerated."
-        elif swearwords[4] in document['post'][1]:
-            post += "Offensive language is not tolerated."
-        else:
-            post += document['post'][1]
-        post += '</td></tr></table>'
+    try:
+        for document in collection.find():
+            post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
+            swearwords = ['lorax','fuck','c-word','n-word','heckin']
+            if '@' in document['post'][1]:
+                username = ""
+                massage = ""
+                for character in document['post'][1]:
+                    if " " in character:
+                        username = stuff[1].split(" ",1)[0]
+                        massage = stuff[1].split(" ",1)[1]
+                        post+='<a href=' + '"https://github.com/' + username.split("@",1)[1] + '">' + username +'</a>' + '  ' + massage
+            elif swearwords[0] in document['post'][1]:
+                post += "Offensive language is not tolerated."
+            elif swearwords[1] in document['post'][1]:
+                post += "Offensive language is not tolerated."
+            elif swearwords[2] in document['post'][1]:
+                post += "Offensive language is not tolerated."
+            elif swearwords[3] in document['post'][1]:
+                post += "Offensive language is not tolerated."
+            elif swearwords[4] in document['post'][1]:
+                post += "Offensive language is not tolerated."
+            else:
+                post += document['post'][1]
+            post += '</td></tr></table>'
+    except Exception e:
+        post += 'no go</td></tr></table>'
     formattedPost = Markup(post)
     return formattedPost
 #redirect to GitHub's OAuth page and confirm callback URL
