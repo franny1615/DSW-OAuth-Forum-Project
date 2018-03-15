@@ -57,49 +57,35 @@ def home():
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
-    try:
-        with open(file,'r+') as jsonFile:
-            data = json.load(jsonFile)
-            data.insert(0,[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']])
-            jsonFile.seek(0)
-            jsonFile.truncate()
-            json.dump(data,jsonFile)
-    except Exception as e: 
-        print(e)
+    collection.insert_one({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
     return render_template('home.html', past_posts=posts_to_html())
 
 def posts_to_html():
     post = ""
-    try:
-        with open(file,'r+') as jsonFile:
-            data = json.load(jsonFile)
-            for stuff in data:
-                post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ stuff[2] + '" class="avatar"><a href=' + '"https://github.com/' + stuff[0] + '">'+ '@' + stuff[0] +'</a>' + '</td><td class="post">'
-                swearwords = ['lorax','fuck','c-word','n-word','heckin']
-                if '@' in stuff[1]:
-                    username = ""
-                    massage = ""
-                    for character in stuff[1]:
-                        if " " in character:
-                            username = stuff[1].split(" ",1)[0]
-                            massage = stuff[1].split(" ",1)[1]
+    for document in collection.find():
+        post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
+        swearwords = ['lorax','fuck','c-word','n-word','heckin']
+        if '@' in document['post'][1]:
+            username = ""
+            massage = ""
+            for character in document['post'][1]:
+                if " " in character:
+                    username = stuff[1].split(" ",1)[0]
+                    massage = stuff[1].split(" ",1)[1]
                     post+='<a href=' + '"https://github.com/' + username.split("@",1)[1] + '">' + username +'</a>' + '  ' + massage
-                elif swearwords[0] in stuff[1]:
-                    post += "Offensive language is not tolerated."
-                elif swearwords[1] in stuff[1]:
-                    post += "Offensive language is not tolerated."
-                elif swearwords[2] in stuff[1]:
-                    post += "Offensive language is not tolerated."
-                elif swearwords[3] in stuff[1]:
-                    post += "Offensive language is not tolerated."
-                elif swearwords[4] in stuff[1]:
-                    post += "Offensive language is not tolerated."
-                else:
-                    post += stuff[1]
-                post += '</td></tr></table>'
-    except Exception as e:
-        print(e)
-        post = "<p>Post could not be submitted.</p>"
+        elif swearwords[0] in document['post'][1]:
+            post += "Offensive language is not tolerated."
+        elif swearwords[1] in document['post'][1]:
+            post += "Offensive language is not tolerated."
+        elif swearwords[2] in document['post'][1]:
+            post += "Offensive language is not tolerated."
+        elif swearwords[3] in document['post'][1]:
+            post += "Offensive language is not tolerated."
+        elif swearwords[4] in document['post'][1]:
+            post += "Offensive language is not tolerated."
+        else:
+            post += document['post'][1]
+        post += '</td></tr></table>'
     formattedPost = Markup(post)
     return formattedPost
 #redirect to GitHub's OAuth page and confirm callback URL
