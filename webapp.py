@@ -95,10 +95,7 @@ def posts_to_html():
 @app.route('/deletePost', methods=['POST']) #this does things
 def deletePost():
     #delete post
-    try:
-        collection.deleteOne({“_id” : ObjectId(request.form['delete'])})
-    except Exception as e:
-        print(e)
+    collection.deleteOne({“_id” : ObjectId(str(request.form['delete']))})
     return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
