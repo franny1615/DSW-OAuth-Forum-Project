@@ -96,7 +96,7 @@ def posts_to_html():
 def deletePost():
     #delete post
     #collection.deleteOne({“_id” : ObjectId(“”)})
-    print(request.form.get['name'])
+    print(request.form.get('name'))
     return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
