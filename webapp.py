@@ -88,7 +88,7 @@ def posts_to_html():
                 post += "Offensive language is not tolerated."
             else:
                 post += document['post'][1]
-            post += '</td><td><form action="/deletePost" method="post"><button type="submit" name="delete" value="'+  str(document.get('_id')) +'" class="btn btn-danger">Delete</button></form></td></tr></table>'
+            post += '</td><td>{% if logged_in %}<form action="/deletePost" method="post"><button type="submit" name="delete" value="'+  str(document.get('_id')) +'" class="btn btn-danger">Delete</button></form>{% endif %}</td></tr></table>'
     except Exception as e:
         print(e)
     formattedPost = Markup(post)
