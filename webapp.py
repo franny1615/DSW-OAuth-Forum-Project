@@ -59,7 +59,7 @@ def home():
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
-    if request.form['message'] is None:
+    if request.form['message'] is '':
         flash("jesus christ type something you creep",'warning') #☭
     else:
         collection.insert_one({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
