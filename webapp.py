@@ -61,7 +61,7 @@ def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
     if request.form['message'] is '':
-        flash("type something bud",'warning') #☭
+        flash("Type something bud.",'warning') #☭
     else:
         collection.insert_one({"post":[session['user_data']['login'], request.form['message'], session['user_data']['avatar_url']]})
     return render_template('home.html', past_posts=posts_to_html())
