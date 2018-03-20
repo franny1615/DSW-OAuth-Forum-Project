@@ -8,6 +8,17 @@
   <p>Censored words are: f-word, n-word, c-word, lorax, and heckin.</p>
   <p>You can address other users by using <u>@username</u> followed by a space.</p>
   
+  {% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }} fade in alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>{{ message }}</strong>
+          </div>
+          {% endfor %}
+      {% endif %}
+  {% endwith %}
+
   {% if logged_in %}
   <form action='/posted' method="post">
     <textarea name="message" style="width:100%; height:100px;"></textarea>
