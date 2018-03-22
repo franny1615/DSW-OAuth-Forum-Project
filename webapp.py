@@ -116,24 +116,25 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
-    return render_template('message.html', message='You were logged out')
+    flash("You were Logged Out.",'info')
+    return render_template('home.html',past_posts=posts_to_html())
 
 @app.route('/login/authorized')
 def authorized():
     resp = github.authorized_response()
     if resp is None:
         session.clear()
-        message = 'Access denied: reason=' + request.args['error'] + ' error=' + request.args['error_description'] + ' full=' + pprint.pformat(request.args)      
+        flash('Access denied: reason=' + request.args['error'] + ' error=' + request.args['error_description'],'warning')       
     else:
         try:
             session['github_token'] = (resp['access_token'], '') #save the token to prove that the user logged in
             session['user_data']=github.get('user').data
-            message='You were successfully logged in as ' + session['user_data']['login']
+            flash('You were successfully logged in as ' + session['user_data']['login'],'info')
         except Exception as inst:
             session.clear()
             print(inst)
-            message='Unable to login, please try again.  '
-    return render_template('message.html', message=message)
+            flash('Unable to login, please try again.','warning')
+    return render_template('home.html',past_posts=posts_to_html())
 
 #the tokengetter is automatically called to check who is logged in.
 @github.tokengetter
