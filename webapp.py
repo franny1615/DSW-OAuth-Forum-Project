@@ -71,7 +71,7 @@ def posts_to_html():
     try:
         for document in collection.find():
             post += "<table id='postTable'><tr><td class='un'><b>Username</b></td><td class='post'><b>Post</b></td></tr>" + '<tr>' + '<td class="un">' + '<img src="'+ document['post'][2] + '" class="avatar"><a href=' + '"https://github.com/' + document['post'][0] + '">'+ '@' + document['post'][0] +'</a>' + '</td><td class="post">'
-            swearwords = ['lorax','fuck','c-word','n-word','heckin']
+            swearwords = ['lorax','f-word','c-word','n-word','heckin']
             if '@' in document['post'][1]:
                 username = ""
                 massage = ""
