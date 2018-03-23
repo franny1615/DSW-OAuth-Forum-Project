@@ -77,8 +77,8 @@ def posts_to_html():
                 massage = ""
                 for character in document['post'][1]:
                     if " " in character:
-                        username = stuff[1].split(" ",1)[0]
-                        massage = stuff[1].split(" ",1)[1]
+                        username = document['post'][1].split(" ",1)[0]
+                        massage = document['post'][1].split(" ",1)[1]
                         post+='<a href=' + '"https://github.com/' + username.split("@",1)[1] + '">' + username +'</a>' + '  ' + massage
             elif swearwords[0] in document['post'][1]:
                 post += "Offensive language is not tolerated."
